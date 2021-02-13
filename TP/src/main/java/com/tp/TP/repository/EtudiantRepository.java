@@ -1,4 +1,4 @@
-package com.tp.TP.process;
+package com.tp.TP.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
