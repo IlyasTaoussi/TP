@@ -14,6 +14,7 @@ import com.tp.TP.ressource.Logins;
 
 @Path("logins")
 public class LoginsREST {
+	
 	@Autowired
 	private LoginsRepository loginsRepository;
 	
