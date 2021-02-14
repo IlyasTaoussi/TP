@@ -11,5 +11,9 @@ public class JerseyConfiguration extends ResourceConfig {
    
    public JerseyConfiguration() {
       register(EtudiantREST.class); 
+      register(LoginsREST.class);
+      register(ModuleREST.class);
+      register(SpecialiteREST.class);
+      register(ProfesseurREST.class);
    }
 }
