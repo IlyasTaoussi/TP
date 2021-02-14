@@ -1,5 +1,6 @@
 package com.tp.TP.process;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -18,10 +19,11 @@ public class EtudiantREST {
 	private EtudiantRepository etudiantRepository;
 	
 	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Etudiant addEtudiant(@QueryParam("nom") String nom, @QueryParam("prenom") String prenom){
-        Etudiant p = new Etudiant(nom, prenom);
-        etudiantRepository.save(p);
-        return p;
+        Etudiant e = new Etudiant(nom, prenom);
+        etudiantRepository.save(e);
+        return e;
     }
 }
