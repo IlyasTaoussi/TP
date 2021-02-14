@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Module implements Serializable{
@@ -19,7 +19,7 @@ public class Module implements Serializable{
 	
 	private String nomModule;
 	
-	@ManyToMany
+	@OneToMany
 	private ArrayList<Specialite> specs;
 
 	public Module(String nomModule) {
