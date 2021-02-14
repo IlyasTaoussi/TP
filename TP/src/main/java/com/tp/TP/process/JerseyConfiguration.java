@@ -10,6 +10,6 @@ import javax.ws.rs.ApplicationPath;
 public class JerseyConfiguration extends ResourceConfig {
    
    public JerseyConfiguration() {
-    //  register(); //.class
+      register(EtudiantREST.class); 
    }
 }
