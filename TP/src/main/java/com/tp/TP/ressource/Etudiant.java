@@ -20,6 +20,7 @@ public class Etudiant implements Serializable{
 	private String prenomEtu;
 
 	@OneToOne
+	@JoinColumn(name = "idLogin")
 	private Logins loginEtu;
 	
 	@OneToOne
