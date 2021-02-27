@@ -4,7 +4,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,7 @@ public class ModuleREST {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Module addModule(@QueryParam("nom") String nom){
-        Module m = new Module(nom);
+    public Module addModule(Module m){
         moduleRepository.save(m);
         return m;
     }
