@@ -12,7 +12,7 @@ import com.tp.TP.process.SpecialiteREST;
 import javax.ws.rs.ApplicationPath;
 
 @Component
-@ApplicationPath("api")
+@ApplicationPath("TP")
 public class JerseyConfiguration extends ResourceConfig {
    
    public JerseyConfiguration() {
