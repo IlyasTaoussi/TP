@@ -1,13 +1,10 @@
 package com.tp.TP.ressource;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Specialite implements Serializable{
@@ -20,11 +17,6 @@ public class Specialite implements Serializable{
 	
 	private String nomSpec;
 	
-	@OneToMany
-	private ArrayList<Etudiant> etudiants;
-	
-	@OneToMany
-	private ArrayList<Module> modules;
 
 	public Specialite(String nomSpec) {
 		super();
@@ -47,21 +39,5 @@ public class Specialite implements Serializable{
 		this.nomSpec = nomSpec;
 	}
 
-	public ArrayList<Etudiant> getEtudiants() {
-		return etudiants;
-	}
-
-	public void setEtudiants(ArrayList<Etudiant> etudiants) {
-		this.etudiants = etudiants;
-	}
-
-	public ArrayList<Module> getModules() {
-		return modules;
-	}
-
-	public void setModules(ArrayList<Module> modules) {
-		this.modules = modules;
-	}
-	
 	
 }
