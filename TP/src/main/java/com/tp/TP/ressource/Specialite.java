@@ -14,9 +14,11 @@ public class Specialite implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idSpec;
-	
 	private String nomSpec;
 	
+	public Specialite(){
+		super();
+	}
 
 	public Specialite(String nomSpec) {
 		super();
