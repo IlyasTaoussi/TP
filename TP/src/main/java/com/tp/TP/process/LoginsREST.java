@@ -24,4 +24,6 @@ public class LoginsREST {
         loginsRepository.save(m);
         return m;
     }
+	
+	
 }
