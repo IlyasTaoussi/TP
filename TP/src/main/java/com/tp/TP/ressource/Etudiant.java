@@ -2,11 +2,14 @@ package com.tp.TP.ressource;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,10 +26,14 @@ public class Etudiant implements Serializable{
 	@JoinColumn(name = "idLogin")
 	private Logins loginEtu;
 	
-	@OneToOne
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idSpec")
 	private Specialite Spec;
 
+	public Etudiant() {
+		super();
+	}
+	
 	public Etudiant(int idEtudiant, String nomEtu, String prenomEtu, Logins loginEtu, Specialite spec) {
 		super();
 		this.idEtudiant = idEtudiant;
@@ -36,9 +43,6 @@ public class Etudiant implements Serializable{
 		Spec = spec;
 	}
 
-	public Etudiant() {
-		super();
-	}
 
 	public Etudiant(String nomEtu, String prenomEtu) {
 		super();
