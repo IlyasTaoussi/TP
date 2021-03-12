@@ -1,7 +1,13 @@
-package com.tp.TP.process;
+package com.tp.TP;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
+
+import com.tp.TP.process.EtudiantREST;
+import com.tp.TP.process.LoginsREST;
+import com.tp.TP.process.ModuleREST;
+import com.tp.TP.process.ProfesseurREST;
+import com.tp.TP.process.SpecialiteREST;
 
 import javax.ws.rs.ApplicationPath;
 
