@@ -8,13 +8,6 @@ public class ModuleInput {
 	public ModuleInput() {
 		super();
 	}
-	
-	
-	public ModuleInput(String nomModule, int idSpec) {
-		super();
-		this.nomModule = nomModule;
-		this.idSpec = idSpec;
-	}
 
 
 	public String getNomModule() {
