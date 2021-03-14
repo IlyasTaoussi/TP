@@ -37,4 +37,5 @@ public class ModuleREST {
         moduleRepository.save(m);
         return Response.ok(m).build();
     }
+	
 }
