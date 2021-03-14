@@ -15,8 +15,10 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.tp.TP.repository.EtudiantRepository;
 import com.tp.TP.repository.ModuleRepository;
 import com.tp.TP.repository.SpecialiteRepository;
+import com.tp.TP.ressource.Etudiant;
 import com.tp.TP.ressource.Module;
 import com.tp.TP.ressource.Specialite;
 
@@ -27,6 +29,8 @@ public class SpecialiteREST {
 	private SpecialiteRepository specialiteRepository;
 	@Autowired
 	private ModuleRepository moduleRepository;
+	@Autowired
+	private EtudiantRepository etudiantRepository;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -49,5 +53,16 @@ public class SpecialiteREST {
 		return Response.ok(listM).build();
 	}
 	
-	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{idSpe}/etudiants")
+	public Response listeEtudiants(@PathParam("idSpe") int idSpe){
+		Optional<Specialite> optS = specialiteRepository.findById(idSpe);
+		if(!optS.isPresent()) return Response.status(Response.Status.NOT_FOUND).build();
+		
+		List<Etudiant> listEt = etudiantRepository.findBySpec(optS.get());
+		if(listEt.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
+		
+		return Response.ok(listEt).build();
+	}
 }
