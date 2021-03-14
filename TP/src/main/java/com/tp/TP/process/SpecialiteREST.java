@@ -27,6 +27,7 @@ public class SpecialiteREST {
 	private SpecialiteRepository specialiteRepository;
 	@Autowired
 	private ModuleRepository moduleRepository;
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
