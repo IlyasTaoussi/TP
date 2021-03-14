@@ -62,19 +62,19 @@ public class Professeur implements Serializable{
 		this.prenomProf = prenom;
 	}
 
-	public Logins getIdLogin() {
+	public Logins getLogin() {
 		return loginProf;
 	}
 
-	public void setIdLogin(Logins loginProf) {
+	public void setLogin(Logins loginProf) {
 		this.loginProf = loginProf;
 	}
 
-	public Module getIdModule() {
+	public Module getModule() {
 		return module;
 	}
 
-	public void setIdModule(Module module) {
+	public void setModule(Module module) {
 		this.module = module;
 	}
 	
