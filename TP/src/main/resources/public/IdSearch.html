@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Connexion</title>
+	<title>Registration</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -21,17 +21,13 @@
 			</header>
 		</div>
 		<form method="post">
-			<h1>Connexion</h1>
+			<h1>Registration</h1>
   			<div class="container">
-    			<label for="email"><b>Email</b></label>
-    			<input type="email" placeholder="Enter Email" name="email" required>
-
-    			<label for="psw"><b>Password</b></label>
-    			<input type="password" placeholder="Enter Password" name="psw" required>
-      			<br><input type="checkbox" name="remember" onclick="toggle()"> Show Password
+    			<label for="idUni"><b>ID Etudiant/Professeur</b></label>
+    			<input type="number" placeholder="Enter ID" name="idUni" required>
       			
-    			<button type="submit" formaction="Principal.html" class="primary">Login</button>
-    			<span class="psw"><a href="IdSearch.html">Register here...</a></span>
+    			<button type="submit" formaction="Registration.html" class="primary">Submit</button>
+    			<span class="psw"><a href="Connexion.html">Already Registered ?Login here...</a></span>
    				
   			</div>
 		</form>
@@ -43,6 +39,7 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script src="assets/js/Registration.js"></script>
 		<script>
 			function toggle(){
 				var x = document.getElementsByName("psw");
