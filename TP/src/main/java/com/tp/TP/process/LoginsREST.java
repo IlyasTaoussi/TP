@@ -3,6 +3,7 @@ package com.tp.TP.process;
 import java.util.Optional;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -62,5 +63,24 @@ public class LoginsREST {
 		return Response.ok(e).build();
 	}
 	
-	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{idUni}")
+	public Response getID(@PathParam("idUni") int idUni) {
+		Optional<Etudiant> optE = etudiantRepository.findById(idUni);
+		Optional<Professeur> optP = professeurRepository.findById(idUni);
+		
+		if(!optE.isPresent()) {
+			if(!optP.isPresent()) {
+				return Response.status(Response.Status.NOT_FOUND).build();
+			}
+			Professeur p = optP.get();
+			professeurRepository.save(p);
+			return Response.ok(p).build();
+		}
+		
+		Etudiant e = optE.get();
+		etudiantRepository.save(e);
+		return Response.ok(e).build();
+	}
 }

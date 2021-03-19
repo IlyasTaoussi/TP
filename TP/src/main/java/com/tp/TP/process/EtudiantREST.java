@@ -36,5 +36,4 @@ public class EtudiantREST {
 		return etudiants;
 	}
 	
-	
 }

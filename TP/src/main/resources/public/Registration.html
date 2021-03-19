@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Connexion</title>
+	<title>Registration</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -20,10 +20,12 @@
 				</div>
 			</header>
 		</div>
-		<p class="hidden">Account Created</p>
 		<form method="post">
-			<h1>Connexion</h1>
+			<h1>Registration</h1>
   			<div class="container">
+  				<label for="nom" id="prenom">Nom : </label>
+  				<label for="prenom" id="prenom">Prenom : </label>
+  				<label for="spemod" id="spemod">Specialite/Module : </label>
     			<label for="email"><b>Email</b></label>
     			<input type="email" placeholder="Enter Email" name="email" required>
 
@@ -31,8 +33,7 @@
     			<input type="password" placeholder="Enter Password" name="psw" required>
       			<br><input type="checkbox" name="remember" onclick="toggle()"> Show Password
       			
-    			<button type="submit" formaction="Principal.html" class="primary">Login</button>
-    			<span class="psw"><a href="IdSearch.html">Register here...</a></span>
+    			<button type="submit" formaction="Principal.html" class="primary">Submit</button>
    				
   			</div>
 		</form>

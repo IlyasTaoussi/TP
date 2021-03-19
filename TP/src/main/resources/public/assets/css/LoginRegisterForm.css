@@ -16,6 +16,20 @@ input[type=email], input[type=password] {
   box-sizing: border-box;
 }
 
+.hidden {
+  margin: 0 auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.visible{
+  visibility: visible;
+  margin: 0 auto;
+  opacity: 100;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
 /* Set a style for all buttons */
 button {
   background-color: #4CAF50;
