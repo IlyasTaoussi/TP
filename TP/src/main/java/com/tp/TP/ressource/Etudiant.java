@@ -28,7 +28,7 @@ public class Etudiant implements Serializable{
 	
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idSpec")
-	private Specialite Spec;
+	private Specialite spec;
 
 	public Etudiant() {
 		super();
@@ -40,7 +40,7 @@ public class Etudiant implements Serializable{
 		this.nomEtu = nomEtu;
 		this.prenomEtu = prenomEtu;
 		this.loginEtu = loginEtu;
-		Spec = spec;
+		this.spec = spec;
 	}
 
 
@@ -83,17 +83,17 @@ public class Etudiant implements Serializable{
 	}
 
 	public Specialite getSpec() {
-		return Spec;
+		return spec;
 	}
 
 	public void setSpec(Specialite spec) {
-		Spec = spec;
+		this.spec = spec;
 	}
 
 	@Override
 	public String toString() {
 		return "Etudiant [idEtudiant=" + idEtudiant + ", nom=" + nomEtu + ", prenom=" + prenomEtu + ", login="
-				+ loginEtu + ", Specialité=" + Spec + "]";
+				+ loginEtu + ", Specialité=" + spec + "]";
 	}
 
 	
