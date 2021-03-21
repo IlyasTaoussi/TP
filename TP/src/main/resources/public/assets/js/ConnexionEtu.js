@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
 	
-	$('#subPr').click(function(){
+	$('#subEt').click(function(){
 		var email = $('#input-mail').val();
 		var passwd = $('#input-psw').val();
 		$.ajax({
@@ -14,7 +14,7 @@ $(document).ready(function(){
 		    	dataType: "json",
 		    	success: function(data){
 		    		console.log(data);
-					Window.sessionStorage.setItem("currentSession",data);
+					window.sessionStorage.setItem("currentSession",data);
 				}
 			});
 	});

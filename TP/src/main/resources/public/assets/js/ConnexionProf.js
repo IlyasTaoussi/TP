@@ -14,7 +14,7 @@ $(document).ready(function(){
 		    	dataType: "json",
 		    	success: function(data){
 		    		console.log(data);
-					Window.sessionStorage.setItem("currentSession",data);
+					window.sessionStorage.setItem("currentSession",data);
 				}
 			});
 	});
