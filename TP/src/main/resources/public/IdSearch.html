@@ -15,7 +15,7 @@
 			<header id="header">
 				<div class="inner">
 					<a href="index.html" class="logo">
-						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Student Space</span>
+						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Registration Space</span>
 					</a>
 				</div>
 			</header>
@@ -23,8 +23,14 @@
 		<form method="post">
 			<h1>Registration</h1>
   			<div class="container">
-    			<label for="idUni"><b>ID Etudiant/Professeur</b></label>
+    			<label for="idUni"><b>ID</b></label>
     			<input type="number" id="idUni" placeholder="Enter ID" name="idUni" required>
+    			<label>Etudiant/Professeur ?</label>
+    			<select id="choix" required>
+    				<option value="">--Choisissez--</option>
+    				<option value="etu">Etudiant</option>
+    				<option value="prof">Professeur</option>
+    			</select>
       			
     			<button type="submit" id="subBtn" formaction="Registration.html" class="primary">Submit</button>
     			<span class="psw"><a href="ConnexionEtu.html">Already Registered ?Login here...</a></span>
@@ -39,7 +45,7 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-		<script src="assets/js/Registration.js"></script>
+		<script src="assets/js/IdSearch.js"></script>
 		<script>
 			function toggle(){
 				var x = document.getElementsByName("psw");

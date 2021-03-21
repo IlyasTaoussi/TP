@@ -23,17 +23,17 @@
 		<form method="post">
 			<h1>Registration</h1>
   			<div class="container">
-  				<label for="nom" id="prenom">Nom : </label>
-  				<label for="prenom" id="prenom">Prenom : </label>
-  				<label for="spemod" id="spemod">Specialite/Module : </label>
+  				<label for="nom" >Nom : <b id="nom-output"></b> </label>
+  				<label for="prenom" >Prenom : <b id="prenom-output"></b></label>
+  				<label for="spemod" >Specialite/Module : <b id="spemod-output"></b></label>
     			<label for="email"><b>Email</b></label>
-    			<input type="email" placeholder="Enter Email" name="email" required>
+    			<input id="mail-input" type="email" placeholder="Enter Email" name="email" required>
 
     			<label for="psw"><b>Password</b></label>
-    			<input type="password" placeholder="Enter Password" name="psw" required>
+    			<input id="psw-input" type="password" placeholder="Enter Password" name="psw" required>
       			<br><input type="checkbox" name="remember" onclick="toggle()"> Show Password
       			
-    			<button type="submit" formaction="Principal.html" class="primary">Submit</button>
+    			<button id="setLogBtn" type="submit" formaction="Principal.html" class="primary">Submit</button>
    				
   			</div>
 		</form>
@@ -45,6 +45,7 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script src="assets/js/Registration.js"></script>
 		<script>
 			function toggle(){
 				var x = document.getElementsByName("psw");
