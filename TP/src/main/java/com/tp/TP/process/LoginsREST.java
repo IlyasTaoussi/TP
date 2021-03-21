@@ -65,22 +65,31 @@ public class LoginsREST {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{idUni}")
-	public Response getID(@PathParam("idUni") int idUni) {
-		Optional<Etudiant> optE = etudiantRepository.findById(idUni);
+	@Path("{idUni}/professeurs")
+	public Response getIdProf(@PathParam("idUni") int idUni) {
 		Optional<Professeur> optP = professeurRepository.findById(idUni);
+
+		if(!optP.isPresent()) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		Professeur p = optP.get();
+		professeurRepository.save(p);
+		return Response.ok(p).build();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{idUni}/etudiants")
+	public Response getIdEtu(@PathParam("idUni") int idUni) {
+		Optional<Etudiant> optE = etudiantRepository.findById(idUni);
 		
 		if(!optE.isPresent()) {
-			if(!optP.isPresent()) {
-				return Response.status(Response.Status.NOT_FOUND).build();
-			}
-			Professeur p = optP.get();
-			professeurRepository.save(p);
-			return Response.ok(p).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 		
 		Etudiant e = optE.get();
 		etudiantRepository.save(e);
 		return Response.ok(e).build();
 	}
+	
 }
