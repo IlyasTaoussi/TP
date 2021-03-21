@@ -1,6 +1,7 @@
 package com.tp.TP.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -11,5 +12,5 @@ public interface ProfesseurRepository extends CrudRepository<Professeur, Integer
 	List<Professeur> findByNomProf(String nomProf);
 	List<Professeur> findByPrenomProf(String prenomProf);
 	Professeur findByModule(Module module);
-	Professeur findByLoginProf(Logins loginProf);
+	Optional<Professeur> findByLoginProf(Logins loginProf);
 }
