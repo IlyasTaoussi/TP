@@ -15,7 +15,7 @@
 			<header id="header">
 				<div class="inner">
 					<a href="index.html" class="logo">
-						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Student Space</span>
+						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Professor Space</span>
 					</a>
 				</div>
 			</header>
@@ -25,13 +25,14 @@
 			<h1>Connexion</h1>
   			<div class="container">
     			<label for="email"><b>Email</b></label>
-    			<input type="email" placeholder="Enter Email" name="email" required>
+    			<input id="input-mail" type="email" placeholder="Enter Email" name="email" required>
 
     			<label for="psw"><b>Password</b></label>
-    			<input type="password" placeholder="Enter Password" name="psw" required>
+    			<input id="input-psw" type="password" placeholder="Enter Password" name="psw" required>
       			<br><input type="checkbox" name="remember" onclick="toggle()"> Show Password
       			
-    			<button type="submit" formaction="Principal.html" class="primary">Login</button>
+    			<button id="subEt" type="submit" formaction="PrincipalEtu.html" class="primary">Login</button>
+    			<a href="ConnexionEtu.html">Student Space here....</a>
     			<span class="psw"><a href="IdSearch.html">Register here...</a></span>
    				
   			</div>
@@ -44,6 +45,7 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script src="assets/js/ConnexionProf.js"></script>
 		<script>
 			function toggle(){
 				var x = document.getElementsByName("psw");
