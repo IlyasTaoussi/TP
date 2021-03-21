@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function(){
-	
+	window.sessionStorage.setItem("identite","etu");
 	$('#subEt').click(function(){
 		var email = $('#input-mail').val();
 		var passwd = $('#input-psw').val();
