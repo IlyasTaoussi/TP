@@ -18,6 +18,7 @@ import com.tp.TP.repository.EtudiantRepository;
 import com.tp.TP.repository.LoginsRepository;
 import com.tp.TP.repository.ProfesseurRepository;
 import com.tp.TP.ressource.Etudiant;
+import com.tp.TP.ressource.LoginInput;
 import com.tp.TP.ressource.Logins;
 import com.tp.TP.ressource.Professeur;
 
@@ -43,7 +44,7 @@ public class LoginsREST {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("{id}")
-	public Response setLogin(@PathParam("id") int id, Logins L) {
+	public Response setLogin(@PathParam("id") int id, LoginInput L) {
 		Optional<Etudiant> optE = etudiantRepository.findById(id);
 		Optional<Professeur> optP = professeurRepository.findById(id);
 		
@@ -52,13 +53,13 @@ public class LoginsREST {
 				return Response.status(Response.Status.NOT_FOUND).build();
 			}
 			Professeur p = optP.get();
-			p.setLogin(L);
+			p.setLogin(new Logins(L.getEmail(),L.getPasswd()));
 			professeurRepository.save(p);
 			return Response.ok(p).build();
 		}
 		
 		Etudiant e = optE.get();
-		e.setLogin(L);
+		e.setLogin(new Logins(L.getEmail(),L.getPasswd()));
 		etudiantRepository.save(e);
 		return Response.ok(e).build();
 	}
@@ -91,5 +92,4 @@ public class LoginsREST {
 		etudiantRepository.save(e);
 		return Response.ok(e).build();
 	}
-	
 }

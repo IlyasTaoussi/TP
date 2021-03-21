@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -38,7 +39,7 @@ public class ProfesseurREST {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Professeur> getAllEtudiants(){
+	public List<Professeur> getAllProfesseurs(){
 		List<Professeur> profs = new ArrayList<>();
 		professeurRepository.findAll().forEach(profs::add);
 		return profs;
@@ -58,5 +59,17 @@ public class ProfesseurREST {
 		
 		Professeur P = optP.get();
 		return Response.ok(P).build();
+	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{idInput}")
+	public Response getProf(@PathParam("idInput") int idProf) {
+		Optional<Professeur> optP = professeurRepository.findById(idProf);
+		if(!optP.isPresent()) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		Professeur E = optP.get();
+		return Response.ok(E).build();
+		
 	}
 }
