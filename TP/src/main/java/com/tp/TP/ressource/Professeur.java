@@ -2,6 +2,7 @@ package com.tp.TP.ressource;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,11 +21,11 @@ public class Professeur implements Serializable{
 	private String nomProf;
 	private String prenomProf;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idLogin")
 	private Logins loginProf;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idModule")
 	private Module module;
 	
