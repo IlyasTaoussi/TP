@@ -3,6 +3,12 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Registration</title>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/IdSearch.js"></script>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -20,7 +26,7 @@
 				</div>
 			</header>
 		</div>
-		<form method="post">
+		<form>
 			<h1>Registration</h1>
   			<div class="container">
     			<label for="idUni"><b>ID</b></label>
@@ -32,7 +38,7 @@
     				<option value="prof">Professeur</option>
     			</select>
       			
-    			<button type="submit" id="subBtn" formaction="Registration.html" class="primary">Submit</button>
+    			<button type="submit" id="subBtn" class="primary">Submit</button>
     			<span class="psw"><a href="ConnexionEtu.html">Already Registered ?Login here...</a></span>
    				
   			</div>
@@ -40,12 +46,6 @@
 	
 	
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script src="assets/js/IdSearch.js"></script>
 		<script>
 			function toggle(){
 				var x = document.getElementsByName("psw");
