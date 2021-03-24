@@ -3,6 +3,7 @@
  */
 $(document).ready(function(){
 	var currentReg = window.sessionStorage.getItem("newRegister");
+	console.log(currentReg.nomEtu);
 	var choix = window.sessionStorage.getItem("choix");
 	if(choix.localeCompare("etu")){
 		$('#nom-output').html(currentReg.nomEtu);
