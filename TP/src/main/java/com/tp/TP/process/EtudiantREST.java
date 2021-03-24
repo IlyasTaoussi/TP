@@ -17,9 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tp.TP.repository.EtudiantRepository;
 import com.tp.TP.repository.LoginsRepository;
+import com.tp.TP.repository.SpecialiteRepository;
 import com.tp.TP.ressource.Etudiant;
+import com.tp.TP.ressource.EtudiantInput;
 import com.tp.TP.ressource.LoginInput;
 import com.tp.TP.ressource.Logins;
+import com.tp.TP.ressource.Specialite;
 
 @Path("etudiants")
 public class EtudiantREST {
@@ -28,12 +31,28 @@ public class EtudiantREST {
 	private EtudiantRepository etudiantRepository;
 	@Autowired
 	private LoginsRepository loginsRepository;
+	@Autowired
+	private SpecialiteRepository specialiteRepository;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Etudiant addEtudiant(Etudiant E){
         return etudiantRepository.save(E);
+    }
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	@Path("add")
+    public Response addEtudiant(EtudiantInput EI){
+		Optional<Specialite> optS = specialiteRepository.findById(EI.getIdSpec());
+		if(!optS.isPresent())
+			return Response.status(Response.Status.NOT_FOUND).build();
+		
+		Etudiant E = new Etudiant(EI.getNomEtu(), EI.getPrenomEtu(), optS.get());
+        etudiantRepository.save(E);
+        return Response.ok(E).build();
     }
 	
 	@GET
@@ -51,14 +70,15 @@ public class EtudiantREST {
 	public Response getLoginEtu(LoginInput LI) {
 		Optional<Logins> optL = loginsRepository.findByMailAndPassword(LI.getEmail(), LI.getPasswd());
 		if(!optL.isPresent())
-			Response.status(Response.Status.NOT_FOUND).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		Optional<Etudiant> optE = etudiantRepository.findByLoginEtu(optL.get());
 		if(!optE.isPresent())
-			Response.status(Response.Status.NOT_FOUND).build();
+			return Response.status(Response.Status.BAD_REQUEST).build();
 		
 		Etudiant E = optE.get();
 		return Response.ok(E).build();
 	}
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idInput}")

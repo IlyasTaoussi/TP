@@ -52,10 +52,10 @@ public class ProfesseurREST {
 	public Response getLoginEtu(LoginInput LI) {
 		Optional<Logins> optL = loginsRepository.findByMailAndPassword(LI.getEmail(), LI.getPasswd());
 		if(!optL.isPresent())
-			Response.status(Response.Status.NOT_FOUND).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		Optional<Professeur> optP = professeurRepository.findByLoginProf(optL.get());
 		if(!optP.isPresent())
-			Response.status(Response.Status.NOT_FOUND).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		
 		Professeur P = optP.get();
 		return Response.ok(P).build();

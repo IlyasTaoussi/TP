@@ -42,7 +42,13 @@ public class Etudiant implements Serializable{
 		this.loginEtu = loginEtu;
 		this.spec = spec;
 	}
-
+	
+	public Etudiant(String nomEtu, String prenomEtu, Specialite spec) {
+		super();
+		this.nomEtu = nomEtu;
+		this.prenomEtu = prenomEtu;
+		this.spec = spec;
+	}
 
 	public Etudiant(String nomEtu, String prenomEtu) {
 		super();
