@@ -20,7 +20,7 @@ public class Module implements Serializable{
 	
 	private String nomModule;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	private Specialite spe;
 
 	public Module(String nomModule, Specialite spe) {

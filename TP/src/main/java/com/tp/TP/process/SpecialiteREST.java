@@ -1,6 +1,7 @@
 package com.tp.TP.process;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,5 +65,13 @@ public class SpecialiteREST {
 		if(listEt.isEmpty()) return Response.status(Response.Status.NOT_FOUND).build();
 		
 		return Response.ok(listEt).build();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Specialite> getAllSpe() {
+		List<Specialite> specs = new ArrayList<>();
+		specialiteRepository.findAll().forEach(specs::add);
+		return specs;
 	}
 }

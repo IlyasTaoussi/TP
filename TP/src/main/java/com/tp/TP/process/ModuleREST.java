@@ -1,8 +1,11 @@
 package com.tp.TP.process;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -38,4 +41,11 @@ public class ModuleREST {
         return Response.ok(m).build();
     }
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Module> getAllModules() {
+		List<Module> modules = new ArrayList<>();
+		moduleRepository.findAll().forEach(modules::add);
+		return modules;
+	}
 }
