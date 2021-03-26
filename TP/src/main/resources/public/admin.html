@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>admin</title>
+    </head>
+    
+    <body>
+    	<h1>ADMIN</h1>
+		<article>
+       		<h1>Ajout Spe</h1>
+      		<input id="spe-input" type="text" /> <button id="button-spe">Ajouter</button>
+        </article>
+        
+		<article>
+            <h1>Ajout Module</h1>
+			<label for="Label 1">Choisir spe:</label>
+			<select id="spe-select">
+			</select>
+			<p><label for="Label 2">Rentrez le module</label>
+            <input id="mod-input" type="text" /> <button id="button-mod">Ajouter</button></p>
+         </article>
+		 <article>
+		 	<h1>Ajout d'un Etudiant:</h1>
+			<label for="Label 3">Choisir Spe :</label>				
+			<select id="spe-select2">
+				<option value="">--Please choose an option--</option>
+			</select>
+			<p><label for="Label 5">Rentrez Nom Etudiant : </label>
+            <input id="nomEtu-input" type="text" /> 
+			<p>
+			<label for="Label 6">Rentrez Prenom Etudiant :</label>
+			<input id="prenomEtu-input" type="number" /> 
+			</p>
+			<p> <button id="button-etu">Ajouter</button></p>
+         </article>
+		 <p> </p>
+		 <article>
+		 	<h1>Ajout d'un Professeur:</h1>
+			<label for="Label 3">Choisir Module :</label>				
+			<select id="mod-select">
+				<option value="">--Please choose an option--</option>
+			</select>
+			<p><label for="Label 5">Rentrez Nom Prof : </label>
+            <input id="nomProf-input" type="text" /> 
+			<p>
+			<label for="Label 6">Rentrez Prenom Prof :</label>
+			<input id="prenomProf-input" type="number" /> 
+			</p>
+			<p> <button id="button-prof">Ajouter</button></p>
+         
+		 </article>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="assets/js/admin.js"></script>
+    </body>
+	
+</html>
