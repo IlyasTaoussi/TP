@@ -26,7 +26,7 @@ public class Etudiant implements Serializable{
 	@JoinColumn(name = "idLogin")
 	private Logins loginEtu;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idSpec")
 	private Specialite spec;
 

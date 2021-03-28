@@ -53,13 +53,13 @@ public class LoginsREST {
 				return Response.status(Response.Status.NOT_FOUND).build();
 			}
 			Professeur p = optP.get();
-			p.setLogin(new Logins(L.getEmail(),L.getPasswd()));
+			p.setLogin(loginsRepository.save(new Logins(L.getEmail(),L.getPasswd())));
 			professeurRepository.save(p);
 			return Response.ok(p).build();
 		}
 		
 		Etudiant e = optE.get();
-		e.setLogin(new Logins(L.getEmail(),L.getPasswd()));
+		e.setLogin(loginsRepository.save(new Logins(L.getEmail(),L.getPasswd())));
 		etudiantRepository.save(e);
 		return Response.ok(e).build();
 	}

@@ -25,7 +25,7 @@ public class Professeur implements Serializable{
 	@JoinColumn(name = "idLogin")
 	private Logins loginProf;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name = "idModule")
 	private Module module;
 	
@@ -33,6 +33,13 @@ public class Professeur implements Serializable{
 		super();
 		this.nomProf = nomProf;
 		this.prenomProf = prenomProf;
+	}
+	
+	public Professeur(String nomProf, String prenomProf, Module module) {
+		super();
+		this.nomProf = nomProf;
+		this.prenomProf = prenomProf;
+		this.module = module;
 	}
 
 	public Professeur() {

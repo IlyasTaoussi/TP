@@ -16,9 +16,12 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tp.TP.repository.LoginsRepository;
+import com.tp.TP.repository.ModuleRepository;
 import com.tp.TP.repository.ProfesseurRepository;
 import com.tp.TP.ressource.LoginInput;
 import com.tp.TP.ressource.Logins;
+import com.tp.TP.ressource.Module;
+import com.tp.TP.ressource.ProfInput;
 import com.tp.TP.ressource.Professeur;
 
 @Path("professeurs")
@@ -28,13 +31,19 @@ public class ProfesseurREST {
 	private ProfesseurRepository professeurRepository;
 	@Autowired
 	private LoginsRepository loginsRepository;
+	@Autowired
+	private ModuleRepository moduleRepository;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Professeur addProfesseur(Professeur p) {
-        professeurRepository.save(p);
-        return p;
+    public Response addProfesseur(ProfInput inP) {
+		Optional<Module> optM = moduleRepository.findById(inP.getIdMod());
+		if(!optM.isPresent())
+			return Response.status(Response.Status.NOT_FOUND).build();
+        Professeur p = new Professeur(inP.getNomProf(), inP.getPrenomProf(),optM.get());
+		professeurRepository.save(p);
+        return Response.ok(p).build();
     }
 	
 	@GET
@@ -60,11 +69,12 @@ public class ProfesseurREST {
 		Professeur P = optP.get();
 		return Response.ok(P).build();
 	}
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idInput}")
-	public Response getProf(@PathParam("idInput") int idProf) {
-		Optional<Professeur> optP = professeurRepository.findById(idProf);
+	public Response getProf(@PathParam("idInput") int idInput) {
+		Optional<Professeur> optP = professeurRepository.findById(idInput);
 		if(!optP.isPresent()) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}

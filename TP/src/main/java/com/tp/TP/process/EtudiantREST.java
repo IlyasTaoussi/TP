@@ -34,17 +34,10 @@ public class EtudiantREST {
 	@Autowired
 	private SpecialiteRepository specialiteRepository;
 	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Etudiant addEtudiant(Etudiant E){
-        return etudiantRepository.save(E);
-    }
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	@Path("add")
     public Response addEtudiant(EtudiantInput EI){
 		Optional<Specialite> optS = specialiteRepository.findById(EI.getIdSpec());
 		if(!optS.isPresent())
@@ -69,8 +62,9 @@ public class EtudiantREST {
 	@Path("logins")
 	public Response getLoginEtu(LoginInput LI) {
 		Optional<Logins> optL = loginsRepository.findByMailAndPassword(LI.getEmail(), LI.getPasswd());
+	//	Optional<Logins> optL = loginsRepository.findByMail(LI.getEmail());
 		if(!optL.isPresent())
-			return Response.status(Response.Status.NOT_FOUND).build();
+			return Response.status(Response.Status.TOO_MANY_REQUESTS).build();
 		Optional<Etudiant> optE = etudiantRepository.findByLoginEtu(optL.get());
 		if(!optE.isPresent())
 			return Response.status(Response.Status.BAD_REQUEST).build();
