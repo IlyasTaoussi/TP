@@ -2,18 +2,19 @@
  * 
  */
 $(document).ready(function(){
-	var currentReg = window.sessionStorage.getItem("newRegister");
-	console.log(currentReg.nomEtu);
+	var currentReg = JSON.parse(window.sessionStorage.getItem("newRegister"));
+	console.log(currentReg.nom);
 	var choix = window.sessionStorage.getItem("choix");
-	if(choix.localeCompare("etu")){
+	if(choix.localeCompare('etu')){
 		$('#nom-output').html(currentReg.nomEtu);
 		$('#prenom-output').html(currentReg.prenomEtu);
 		$('#spemod-output').html(currentReg.spec.nomSpec);
 	}else{
-		$('#nom-output').html(currentReg.nomProf);
-		$('#prenom-output').html(currentReg.prenomProf);
+		$('#nom-output').html(currentReg.nom);
+		$('#prenom-output').html(currentReg.prenom);
 		$('#spemod-output').html(currentReg.module.nomModule);
 	}
+	
 	$('#setLogBtn').click(function(){
 		var email = $('#mail-input').val();
 		var passwd = $('#psw-input').val();
@@ -26,7 +27,7 @@ $(document).ready(function(){
 		    	dataType: "json",
 		    	success: function(data){
 		    		console.log(data);
-					window.sessionStorage.setItem("currentSession",data);
+					window.location.replace("http://localhost:8080/ConnexionEtu.html")
 				}
 			});
 		}else{
@@ -37,8 +38,8 @@ $(document).ready(function(){
 		    	contentType: "application/json; charset=utf-8",
 		    	dataType: "json",
 		    	success: function(data){
-		    		console.log(data);
-					window.sessionStorage.setItem("currentSession",data);
+		    		console.log(data);	
+					window.location.replace("http://localhost:8080/ConnexionProf.html");
 				}
 			});
 		}

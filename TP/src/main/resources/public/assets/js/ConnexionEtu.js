@@ -13,12 +13,9 @@ $(document).ready(function(){
 		    	dataType: "json",
 		    	success: function(data){
 		    		console.log(data);
-					window.sessionStorage.setItem("currentSession",data);
-			//		window.location.replace("http://localhost:8080/PrincipalEtu.html");		
-				},
-				error: function (jqXHR, ajaxOptions, thrownError) {
-        			alert("something went wrong");
-    			}
+					window.sessionStorage.setItem("currentSession",JSON.stringify(data));
+					window.location.replace("http://localhost:8080/PrincipalEtu.html");		
+				}
 			});
 	});
 });
