@@ -6,6 +6,7 @@ $(document).ready(function(){
     	$.each(resp, function(index, item) {
     		$('#spe-select').append('<option value="spe-'+item.idSpec+'" >'+item.nomSpec+'</option>');
 			$('#spe-select2').append('<option value="spe-'+item.idSpec+'" >'+item.nomSpec+'</option>');
+			$('#spe-select3').append('<option value="spe-'+item.idSpec+'" >'+item.nomSpec+'</option>')
 		});
     });
 	
@@ -16,7 +17,7 @@ $(document).ready(function(){
     });
     
     $('#button-spe').click(function(){
-		var nomSpec = $('#spe-input').val();
+		let nomSpec = $('#spe-input').val();
 			$.ajax({
 		    	type: "POST",
 		    	url: "http://localhost:8080/TP/specialites",
@@ -26,7 +27,10 @@ $(document).ready(function(){
 		    	success: function(data){
 		    		console.log(data);
 					$('#spe-select').append('<option value="spe-'+data.idSpec+'" >'+data.nomSpec+'</option>');
-					$('#spe-select2').append('<option value="spe-'+item.idSpec+'" >'+item.nomSpec+'</option>');}
+					$('#spe-select2').append('<option value="spe-'+data.idSpec+'" >'+data.nomSpec+'</option>');
+					$('#spe-select3').append('<option value="spe-'+data.idSpec+'" >'+data.nomSpec+'</option>');
+					},
+				
 			});
 		
 		
@@ -35,8 +39,8 @@ $(document).ready(function(){
 	});
 	
 	$('#button-mod').click(function(){
-		var idSpec = $('#spe-select').val().replace('spe-','');
-		var nomModule = $('#mod-input').val();
+		let idSpec = $('#spe-select').val().replace('spe-','');
+		let nomModule = $('#mod-input').val();
 		
 		$.ajax({
 			type: "POST",
@@ -55,9 +59,9 @@ $(document).ready(function(){
 	});
 	
 	$('#button-etu').click(function(){
-		var idSpec = $('#spe-select2').val().replace('spe-','');
-		var nomEtu = $('#nomEtu-input').val();
-		var prenomEtu = $('#prenomEtu-input').val();
+		let idSpec = $('#spe-select2').val().replace('spe-','');
+		let nomEtu = $('#nomEtu-input').val();
+		let prenomEtu = $('#prenomEtu-input').val();
 		console.log(JSON.stringify({ "nomEtu": nomEtu, "prenomEtu": prenomEtu, "idSpec" : idSpec}));
 		$.ajax({
 			type: "POST",
@@ -72,9 +76,9 @@ $(document).ready(function(){
 	});
 	
 	$('#button-prof').click(function(){
-		var idMod = $('#mod-select').val().replace('mod-','');
-		var nomProf = $('#nomProf-input').val();
-		var prenomProf = $('#prenomProf-input').val();
+		let idMod = $('#mod-select').val().replace('mod-','');
+		let nomProf = $('#nomProf-input').val();
+		let prenomProf = $('#prenomProf-input').val();
 		console.log(JSON.stringify({ "idMod" : idMod ,"nomProf": nomProf, "prenomProf": prenomProf}));
 		$.ajax({
 			type: "POST",
@@ -88,4 +92,13 @@ $(document).ready(function(){
 		})
 	});
 	
-})
+	$('#spe-select3').change(function(){
+		$('#mod-select').empty();
+		let value = $('#spe-select3').val().replace('spe-','');
+		$.get("http://localhost:8080/TP/specialites/"+value+"/modules",function(resp){
+			$.each(resp, function(index, item){
+				$('#mod-select').append('<option value="mod-'+item.idModule+'" >'+item.nomModule+'</option>');
+			})
+		})
+	});
+});
