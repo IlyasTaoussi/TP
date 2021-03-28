@@ -1,6 +1,8 @@
 package com.tp.TP.ressource;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -29,7 +32,10 @@ public class Etudiant implements Serializable{
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@JoinColumn(name = "idSpec")
 	private Specialite spec;
-
+	
+	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	private List<Note> notes;
+	
 	public Etudiant() {
 		super();
 	}
@@ -48,6 +54,7 @@ public class Etudiant implements Serializable{
 		this.nomEtu = nomEtu;
 		this.prenomEtu = prenomEtu;
 		this.spec = spec;
+		this.notes = new ArrayList<>();
 	}
 
 	public Etudiant(String nomEtu, String prenomEtu) {
@@ -100,6 +107,14 @@ public class Etudiant implements Serializable{
 	public String toString() {
 		return "Etudiant [idEtudiant=" + idEtudiant + ", nom=" + nomEtu + ", prenom=" + prenomEtu + ", login="
 				+ loginEtu + ", Specialité=" + spec + "]";
+	}
+
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
 	}
 
 	
