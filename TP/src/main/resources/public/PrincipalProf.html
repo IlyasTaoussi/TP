@@ -14,9 +14,16 @@
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<script>
 		$(document).ready(function(){
-			var currentSession = JSON.parse(window.sessionStorage.getItem('currentSession'));
-			$('#prof-nom').html(currentSession.nom);
+			var currentSession;
+			$.get("http://localhost:8080/TP/professeurs/9",function(resp){
+				console.log(resp);
+				currentSession = resp;
+				window.sessionStorage.setItem('currentSession', JSON.stringify(resp));
+				$('#prof-nom').html(currentSession.nom);
+			})
+			
 		})
+		
 	</script>
 </head>
 <body class="is-preload">

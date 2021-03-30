@@ -7,7 +7,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/own.css" />
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script>
+	$(document).ready(function(){
+		window.sessionStorage.clear();
+	})
+	</script>
 </head>
 	<body>
 	<!-- Header -->
@@ -20,7 +28,7 @@
 				</div>
 			</header>
 		</div>
-		<form>
+		<div class="form">
 			<h1>Connexion</h1>
   			<div class="container">
     			<label for="email"><b>Email</b></label>
@@ -30,18 +38,15 @@
     			<input id="input-psw" type="password" placeholder="Enter Password" name="psw" required>
       			<br><input type="checkbox" name="remember" onclick="toggle()"> Show Password
       			
-    			<button id="subEt" type="submit" class="primary">Login</button>
+    			<button id="subEt" class="primary">Login</button>
     			<a href="ConnexionProf.html">Professor Space here....</a>
     			<span class="psw"><a href="IdSearch.html">Register here...</a></span>
    				
   			</div>
-		</form>
-	
+		</div>
 	
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
+		
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="assets/js/ConnexionEtu.js"></script>
