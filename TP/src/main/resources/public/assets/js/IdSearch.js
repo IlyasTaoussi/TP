@@ -7,7 +7,7 @@ $(document).ready(function(){
 		let idInput = $('#idUni').val();
 		let choix = $('#choix').val();
 		console.log(choix);
-		if(choix.localeCompare('etu')){
+		if(choix == 'etu'){
 			$.get("http://localhost:8080/TP/etudiants/"+idInput,function(resp){
 					console.log(resp);
 					window.sessionStorage.setItem("newRegister", JSON.stringify(resp));

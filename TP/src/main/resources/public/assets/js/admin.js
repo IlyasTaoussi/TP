@@ -62,7 +62,7 @@ $(document).ready(function(){
 		let idSpec = $('#spe-select2').val().replace('spe-','');
 		let nomEtu = $('#nomEtu-input').val();
 		let prenomEtu = $('#prenomEtu-input').val();
-		console.log(JSON.stringify({ "nomEtu": nomEtu, "prenomEtu": prenomEtu, "idSpec" : idSpec}));
+	//	console.log(JSON.stringify({ "nomEtu": nomEtu, "prenomEtu": prenomEtu, "idSpec" : idSpec}));
 		$.ajax({
 			type: "POST",
 		    url: "http://localhost:8080/TP/etudiants",
@@ -79,7 +79,7 @@ $(document).ready(function(){
 		let idMod = $('#mod-select').val().replace('mod-','');
 		let nomProf = $('#nomProf-input').val();
 		let prenomProf = $('#prenomProf-input').val();
-		console.log(JSON.stringify({ "idMod" : idMod ,"nomProf": nomProf, "prenomProf": prenomProf}));
+	//	console.log(JSON.stringify({ "idMod" : idMod ,"nomProf": nomProf, "prenomProf": prenomProf}));
 		$.ajax({
 			type: "POST",
 		    url: "http://localhost:8080/TP/professeurs",

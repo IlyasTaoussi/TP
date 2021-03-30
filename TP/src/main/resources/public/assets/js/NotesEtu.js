@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var currentSession = JSON.parse(window.sessionStorage.getItem('currentSession'));
 	$.get("http://localhost:8080/TP/specialites/"+currentSession.spec.idSpec+"/modules",function(resp){
 		$.each(resp,function(index,item){
-			$('#mod-select').append('<option value="mod-${item.idModule}">'+item.nomModule+'</option>');
+			$('#mod-select').append('<option value="mod-'+item.idModule+'">'+item.nomModule+'</option>');
 		})
 	})
 	
@@ -14,9 +14,8 @@ $(document).ready(function(){
 	$('#mod-select').change(function(){
 		$('#note-body').empty();
 		let idInput = $('#mod-select').val().replace('mod-','');
-		$.get("http://localhost:8080/TP/notes/"+currentSession.idEtu+'/'+idInput,function(resp){
+		$.get("http://localhost:8080/TP/notes/"+currentSession.idEtudiant+'/'+idInput,function(resp){
 			$.each(resp, function(index, item){
-				console.log(item);
 				setNoteTable(item);
 			})
 		})
@@ -24,13 +23,13 @@ $(document).ready(function(){
 	});
 	
 	function setNoteTable(data){
-		$.get("http://localhost:8080/TP/modules/"+data.module.idModule+"professeurs",function(resp){
-			$('#note-body').append('<tr id="'+data.idNote+'">');
-			$('#note-body').append('<td>'+data.idModule.nomModule +'<td>');
-			$('#note-body').append('<td>'+resp.nom +'<td>');
-			$('#note-body').append('<td>'+resp.prenom+'<td>');
-			$('#note-body').append('<td>'+data.note+'<td>');
-			$('#note-body').append('</tr>');
+		$.get("http://localhost:8080/TP/modules/"+data.mod.idModule+"/professeurs",function(resp){
+			$('#note-body').append('<tr id="'+data.idNote+'">'
+									+'<td>'+data.mod.nomModule +'</td>'
+									+'<td>'+resp.nom +'</td>'
+									+'<td>'+resp.prenom+'</td>'
+									+'<td>'+data.note+'</td>'
+									+'</tr>');
 		})
 
 	}
