@@ -24,7 +24,6 @@ input[type=email], input[type=password] {
 }
 
 .visible{
-  visibility: visible;
   margin: 0 auto;
   opacity: 100;
   transition: visibility 0s linear 300ms, opacity 300ms;
@@ -61,6 +60,8 @@ button:hover {
   margin: 0 auto;
   border-color: black;
 }
+
+
 
 /* The "Forgot password" text */
 span.psw {

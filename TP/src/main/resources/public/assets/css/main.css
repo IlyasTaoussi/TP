@@ -198,9 +198,9 @@ input, select, textarea {
 	h2, h3, h4, h5, h6 {
 		font-weight: 900;
 		line-height: 1.5;
-		margin: 0 0 2em 0;
+		margin: 0.5em 0 1em 1em;
 		text-transform: uppercase;
-		letter-spacing: 0.35em;
+		letter-spacing: 0.25em;
 	}
 
 		h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1787,7 +1787,8 @@ input, select, textarea {
 	}
 
 	header p {
-		margin-top: -1em;
+		margin-top: -0.2em;
+		
 	}
 
 	@media screen and (max-width: 736px) {
@@ -2795,7 +2796,9 @@ input, select, textarea {
 /* Header */
 
 	#header {
-		padding: 8em 0 0.1em 0 ;
+		padding: 2em 0 0.1em 0 ;
+		color: rgb(240,185,185);
+		background: rgb(75,25,180);
 	}
 
 		#header .logo {
