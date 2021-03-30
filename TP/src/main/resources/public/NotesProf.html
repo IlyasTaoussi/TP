@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Weeb University</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/own.css" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+	<div id="wrapper">
+
+	  	<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="index.html" class="logo">
+					<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Student Space</span>
+				</a>
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="Principal.html">Home</a></li>
+				<li><a href="NotesProf.html">Marks Setting</a></li>
+				<li><a href="#.html">Students</a>
+				<li><a href="Info.html">Profile Info</a></li>
+				<li><a href="about.html">About Site</a></li>
+				<li><a href="ConnexionProf.html" onclick="window.sessionStorage.clear()">Deconnexion</a></li>
+			</ul>
+		</nav>
+	</div>
+	<section>
+		<h2> Setting Students' Results</h2>
+		<div class="container">
+			<label>Donna Seito desu ka ? :</label>
+			<select id="etu-select">
+				<option value="">--Seito wo Erabe Kudasai--</option>
+				<option value="et-11">Test</option>
+			</select>
+		</div>
+		<div id="profil" class="hidden">
+			<div class="table-wrapper">
+				<h3>Profile</h3>
+				<table class="alt">
+					<tbody>
+						<tr>
+							<th>ID</th>
+							<td id="etu-id"></td>
+						</tr>
+						<tr>
+							<th>Nom</th>
+							<td id="etu-nom"></td>
+						</tr>
+						<tr>
+							<th>Prenom</th>
+							<td id="etu-prenom"></td>
+						</tr>
+						<tr>
+							<th>Spe</th>
+							<td id="etu-spe"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="table-wrapper">
+				<h3>Mark</h3>
+				<table class="alt">
+					<thead>
+						<tr>
+							<th>Module</th>
+							<th colspan="2">Student</th>
+							<th>Mark</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="note-body">
+						<tr>
+							<td id="mod"></td>
+							<td id="etu-nom"></td>
+							<td id="etu-prenom"></td>
+							<td ><input type="number" placeholder="Give Mark" id="note-input" required></td>
+							<td><button id="subNoteBtn" >Add</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/NotesProf.js"></script>
+</body>
+</html>
