@@ -1,5 +1,7 @@
 package com.tp.TP.process;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.ws.rs.Consumes;
@@ -57,8 +59,20 @@ public class NoteREST {
 		if((!optE.isPresent())) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return Response.ok(optE.get()).build();
+		return Response.ok(optE.get().getNotes()).build();
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{idEtu}/{idMod}")
+	public Response getNotesMod(@PathParam("idEtu") int idEtu, @PathParam("idMod") int idMod) {
+		Optional<Etudiant> optE = etudiantRepository.findById(idEtu);
+		if((!optE.isPresent())) {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+		List<Note> notesM = new ArrayList<>(); 
+		optE.get().getNotes().forEach(n -> {if(n.getMod().getIdModule() == idMod) notesM.add(n);});
+		return Response.ok(notesM).build();
+	}
 	
 }

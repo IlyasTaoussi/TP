@@ -8,6 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -15,9 +16,11 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tp.TP.repository.ModuleRepository;
+import com.tp.TP.repository.ProfesseurRepository;
 import com.tp.TP.repository.SpecialiteRepository;
 import com.tp.TP.ressource.Module;
 import com.tp.TP.ressource.ModuleInput;
+import com.tp.TP.ressource.Professeur;
 import com.tp.TP.ressource.Specialite;
 
 @Path("modules")
@@ -27,7 +30,8 @@ public class ModuleREST {
 	private ModuleRepository moduleRepository;
 	@Autowired
 	private SpecialiteRepository speRepository;
-	
+	@Autowired
+	private ProfesseurRepository professeurRepository;
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,5 +51,18 @@ public class ModuleREST {
 		List<Module> modules = new ArrayList<>();
 		moduleRepository.findAll().forEach(modules::add);
 		return modules;
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{idMod}/professeurs")
+	public Response getProf(@PathParam("idMod") int idMod) {
+		Optional<Module> optM = moduleRepository.findById(idMod);
+		if(!optM.isPresent()) return Response.status(Response.Status.NOT_FOUND).build();
+		
+		Optional<Professeur> optP = professeurRepository.findByModule(optM.get());
+		if(!optP.isPresent()) return Response.status(Response.Status.NOT_FOUND).build();
+
+		return Response.ok(optP.get()).build();
 	}
 }
