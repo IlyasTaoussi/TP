@@ -13,10 +13,8 @@ public class Note {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idNote;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	private Module mod;
-	@OneToOne(cascade=CascadeType.ALL)
-	private Etudiant et;
 	
 	private double note;
 
@@ -24,10 +22,9 @@ public class Note {
 		super();
 	}
 
-	public Note(Module mod, Etudiant et, double note) {
+	public Note(Module mod, double note) {
 		super();
 		this.mod = mod;
-		this.et = et;
 		this.note = note;
 	}
 
@@ -45,14 +42,6 @@ public class Note {
 
 	public void setMod(Module mod) {
 		this.mod = mod;
-	}
-
-	public Etudiant getEt() {
-		return et;
-	}
-
-	public void setEt(Etudiant et) {
-		this.et = et;
 	}
 
 	public double getNote() {

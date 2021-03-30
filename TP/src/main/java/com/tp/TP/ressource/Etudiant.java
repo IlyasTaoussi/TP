@@ -29,11 +29,11 @@ public class Etudiant implements Serializable{
 	@JoinColumn(name = "idLogin")
 	private Logins loginEtu;
 	
-	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idSpec")
 	private Specialite spec;
 	
-	@OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Note> notes;
 	
 	public Etudiant() {
@@ -47,6 +47,7 @@ public class Etudiant implements Serializable{
 		this.prenomEtu = prenomEtu;
 		this.loginEtu = loginEtu;
 		this.spec = spec;
+		this.notes = new ArrayList<>();
 	}
 	
 	public Etudiant(String nomEtu, String prenomEtu, Specialite spec) {
@@ -61,6 +62,7 @@ public class Etudiant implements Serializable{
 		super();
 		this.nomEtu = nomEtu;
 		this.prenomEtu = prenomEtu;
+		this.notes = new ArrayList<>();
 	}
 
 	public int getIdEtudiant() {

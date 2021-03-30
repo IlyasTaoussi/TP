@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import com.tp.TP.process.EtudiantREST;
 import com.tp.TP.process.LoginsREST;
 import com.tp.TP.process.ModuleREST;
+import com.tp.TP.process.NoteREST;
 import com.tp.TP.process.ProfesseurREST;
 import com.tp.TP.process.SpecialiteREST;
 
@@ -21,5 +22,6 @@ public class JerseyConfiguration extends ResourceConfig {
       register(ModuleREST.class);
       register(SpecialiteREST.class);
       register(ProfesseurREST.class);
+      register(NoteREST.class);
    }
 }

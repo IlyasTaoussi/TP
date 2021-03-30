@@ -34,18 +34,23 @@ public class NoteREST {
 	private ModuleRepository moduleRepository;
 	
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idEtu}")
 	public Response setNote(@PathParam("idEtu") int idEtu, NoteInput nIn) {
 		Optional<Etudiant> optE = etudiantRepository.findById(idEtu);
 		Optional<Module> optM = moduleRepository.findById(nIn.getIdMod());
-		if((!optE.isPresent()) || (!optM.isPresent())) {
-			return Response.status(Response.Status.NOT_FOUND).build();
+		if((!optM.isPresent())) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
+		if((!optE.isPresent())) {
+			return Response.status(Response.Status.BAD_GATEWAY).build();
+		}
+		
 		Etudiant e = optE.get();
-		Note n = new Note(optM.get(),optE.get() ,nIn.getNote());
+		Note n = new Note(optM.get(),nIn.getNote());
 		e.getNotes().add(n);
+		
 		noteRepository.save(n);
 		etudiantRepository.save(e);
 		return Response.ok(n).build();
@@ -57,7 +62,7 @@ public class NoteREST {
 	public Response getNotes(@PathParam("idEtu") int idEtu) {
 		Optional<Etudiant> optE = etudiantRepository.findById(idEtu);
 		if((!optE.isPresent())) {
-			return Response.status(Response.Status.NOT_FOUND).build();
+			return Response.status(Response.Status.FORBIDDEN).build();
 		}
 		return Response.ok(optE.get().getNotes()).build();
 	}
