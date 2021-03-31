@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -80,4 +81,21 @@ public class NoteREST {
 		return Response.ok(notesM).build();
 	}
 	
+	@DELETE
+	@Path("{idEtu}/{idNote}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deletePersonne(@PathParam("idEtu") int idEtu, @PathParam("idNote") int idNote) {
+		Optional<Etudiant> optE = etudiantRepository.findById(idEtu);
+		Optional<Note> optN = noteRepository.findById(idNote);
+		if((!optE.isPresent()) || (!optN.isPresent())) {
+			return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+		}
+		Etudiant e = optE.get();
+		e.getNotes().remove(optN.get());
+		etudiantRepository.save(e);
+		noteRepository.deleteById(idNote);
+		
+		
+		return Response.noContent().build();
+	}
 }

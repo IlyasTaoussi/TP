@@ -61,6 +61,40 @@ public class Module implements Serializable{
 	public String toString() {
 		return "Module [idModule=" + idModule + ", nomModule=" + nomModule + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idModule;
+		result = prime * result + ((nomModule == null) ? 0 : nomModule.hashCode());
+		result = prime * result + ((spe == null) ? 0 : spe.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Module other = (Module) obj;
+		if (idModule != other.idModule)
+			return false;
+		if (nomModule == null) {
+			if (other.nomModule != null)
+				return false;
+		} else if (!nomModule.equals(other.nomModule))
+			return false;
+		if (spe == null) {
+			if (other.spe != null)
+				return false;
+		} else if (!spe.equals(other.spe))
+			return false;
+		return true;
+	}
 	
 	
 }

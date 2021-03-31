@@ -20,6 +20,7 @@ import com.tp.TP.repository.LoginsRepository;
 import com.tp.TP.repository.SpecialiteRepository;
 import com.tp.TP.ressource.Etudiant;
 import com.tp.TP.ressource.EtudiantInput;
+import com.tp.TP.ressource.HashClass;
 import com.tp.TP.ressource.LoginInput;
 import com.tp.TP.ressource.Logins;
 import com.tp.TP.ressource.Specialite;
@@ -61,13 +62,20 @@ public class EtudiantREST {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("logins")
 	public Response getLoginEtu(LoginInput LI) {
-		Optional<Logins> optL = loginsRepository.findByMailAndPassword(LI.getEmail(), LI.getPasswd());
-	//	Optional<Logins> optL = loginsRepository.findByMail(LI.getEmail());
+		String hashed;
+		try {
+			String PassToHash = HashClass.StringToSHA256Hash(LI.getPasswd());
+			hashed = PassToHash;
+		} catch (Exception e) {
+			System.err.println("Hash Function Error !!");
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+		Optional<Logins> optL = loginsRepository.findByMailAndPassword(LI.getEmail(), hashed);
 		if(!optL.isPresent())
-			return Response.status(Response.Status.TOO_MANY_REQUESTS).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		Optional<Etudiant> optE = etudiantRepository.findByLoginEtu(optL.get());
 		if(!optE.isPresent())
-			return Response.status(Response.Status.BAD_REQUEST).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		
 		Etudiant E = optE.get();
 		return Response.ok(E).build();

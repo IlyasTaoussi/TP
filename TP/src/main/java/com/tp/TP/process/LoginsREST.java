@@ -18,6 +18,7 @@ import com.tp.TP.repository.EtudiantRepository;
 import com.tp.TP.repository.LoginsRepository;
 import com.tp.TP.repository.ProfesseurRepository;
 import com.tp.TP.ressource.Etudiant;
+import com.tp.TP.ressource.HashClass;
 import com.tp.TP.ressource.LoginInput;
 import com.tp.TP.ressource.Logins;
 import com.tp.TP.ressource.Professeur;
@@ -47,21 +48,35 @@ public class LoginsREST {
 	public Response setLogin(@PathParam("id") int id, LoginInput L) {
 		Optional<Etudiant> optE = etudiantRepository.findById(id);
 		Optional<Professeur> optP = professeurRepository.findById(id);
-		
-		if(!optE.isPresent()) {
-			if(!optP.isPresent()) {
-				return Response.status(Response.Status.NOT_FOUND).build();
-			}
-			Professeur p = optP.get();
-			p.setLogin(loginsRepository.save(new Logins(L.getEmail(),L.getPasswd())));
-			professeurRepository.save(p);
-			return Response.ok(p).build();
+		String hashed;
+		try {
+			String PassToHash = HashClass.StringToSHA256Hash(L.getPasswd());
+			hashed = PassToHash;
+		} catch (Exception e) {
+			System.err.println("Hash Function Error !!");
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 		
-		Etudiant e = optE.get();
-		e.setLogin(loginsRepository.save(new Logins(L.getEmail(),L.getPasswd())));
-		etudiantRepository.save(e);
-		return Response.ok(e).build();
+		Optional<Logins> optL = loginsRepository.findByMailAndPassword(L.getEmail(), hashed);
+		if(!optL.isPresent()){
+			if(!optE.isPresent()) {
+				if(!optP.isPresent()) {
+					return Response.status(Response.Status.NOT_FOUND).build();
+				}
+				Professeur p = optP.get();
+				p.setLogin(loginsRepository.save(new Logins(L.getEmail(),hashed)));
+				professeurRepository.save(p);
+				return Response.ok(p).build();
+			}
+		
+			Etudiant e = optE.get();
+			e.setLogin(loginsRepository.save(new Logins(L.getEmail(),hashed)));
+			etudiantRepository.save(e);
+			return Response.ok(e).build();
+		}
+		else {
+			return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+		}
 	}
 	
 	@GET

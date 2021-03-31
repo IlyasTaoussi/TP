@@ -51,6 +51,39 @@ public class Note {
 	public void setNote(double note) {
 		this.note = note;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idNote;
+		result = prime * result + ((mod == null) ? 0 : mod.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(note);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Note other = (Note) obj;
+		if (idNote != other.idNote)
+			return false;
+		if (mod == null) {
+			if (other.mod != null)
+				return false;
+		} else if (!mod.equals(other.mod))
+			return false;
+		if (Double.doubleToLongBits(note) != Double.doubleToLongBits(other.note))
+			return false;
+		return true;
+	}
 	
 	
 }

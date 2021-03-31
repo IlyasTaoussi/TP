@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.tp.TP.repository.LoginsRepository;
 import com.tp.TP.repository.ModuleRepository;
 import com.tp.TP.repository.ProfesseurRepository;
+import com.tp.TP.ressource.HashClass;
 import com.tp.TP.ressource.LoginInput;
 import com.tp.TP.ressource.Logins;
 import com.tp.TP.ressource.Module;
@@ -58,8 +59,16 @@ public class ProfesseurREST {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("logins")
-	public Response getLoginEtu(LoginInput LI) {
-		Optional<Logins> optL = loginsRepository.findByMailAndPassword(LI.getEmail(), LI.getPasswd());
+	public Response getLoginProf(LoginInput LI) {
+		String hashed;
+		try {
+			String PassToHash = HashClass.StringToSHA256Hash(LI.getPasswd());
+			hashed = PassToHash;
+		} catch (Exception e) {
+			System.err.println("Hash Function Error !!");
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+		}
+		Optional<Logins> optL = loginsRepository.findByMailAndPassword(LI.getEmail(),hashed);
 		if(!optL.isPresent())
 			return Response.status(Response.Status.NOT_FOUND).build();
 		Optional<Professeur> optP = professeurRepository.findByLoginProf(optL.get());
