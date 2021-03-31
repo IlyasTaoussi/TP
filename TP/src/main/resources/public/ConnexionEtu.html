@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="ISO-8859-1">
-	<title>Connexion</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/own.css" />
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<script>
-	$(document).ready(function(){
-		window.sessionStorage.clear();
-	})
-	</script>
-</head>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Weeb University</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/own.css" />
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				window.sessionStorage.clear();
+				
+				function toggle(){
+					var x = document.getElementsByName("input-psw");
+					if(x.type === "password"){
+						x.type = "text";
+					}else{
+						x.type = "password";
+					}
+				}
+			})
+		</script>
+	</head>
 	<body>
 	<!-- Header -->
 		<div>
 			<header id="header">
 				<div class="inner">
-					<a href="index.html" class="logo">
+					<a href="ConnexionEtu.html" class="logo">
 						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Student Space</span>
 					</a>
 				</div>
@@ -36,7 +44,8 @@
 
     			<label for="psw"><b>Password</b></label>
     			<input id="input-psw" type="password" placeholder="Enter Password" name="psw" required>
-      			<br><input type="checkbox" name="remember" onclick="toggle()"> Show Password
+      			<input type="checkbox" name="remember" onclick="toggle()">
+      			<label for="remember"> Show Password </label>
       			
     			<button id="subEt" class="primary">Login</button>
     			<a href="ConnexionProf.html">Professor Space here....</a>
@@ -51,14 +60,7 @@
 		<script src="assets/js/main.js"></script>
 		<script src="assets/js/ConnexionEtu.js"></script>
 		<script>
-			function toggle(){
-				var x = document.getElementsByName("psw");
-				if(x.type === "password"){
-					x.type = "text";
-				}else{
-					x.type = "password";
-				}
-			}
+			
 		</script>
 	</body>
 </html>

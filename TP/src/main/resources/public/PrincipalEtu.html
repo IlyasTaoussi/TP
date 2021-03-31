@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Page Principale</title>
+	<title>Weeb University</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -13,14 +13,8 @@
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<script>
 		$(document).ready(function(){
-			var currentSession;
-			$.get("http://localhost:8080/TP/etudiants/3",function(resp){
-				console.log(resp);
-				currentSession = resp;
-				window.sessionStorage.setItem('currentSession', JSON.stringify(resp));
-				$('#etu-nom').html(currentSession.nomEtu);
-			})
-			
+			var currentSession = JSON.parse(window.sessionStorage.getItem('currentSession'));
+			$('#etu-nom').html(currentSession.nomEtu);
 		})
 		
 	</script>
@@ -32,7 +26,7 @@
 	  	<!-- Header -->
 		<header id="header">
 			<div class="inner">
-				<a href="index.html" class="logo">
+				<a href="PrincipalEtu.html" class="logo">
 					<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Student Space</span>
 				</a>
 				<!-- Nav -->
@@ -51,7 +45,7 @@
 				<li><a href="PrincipalEtu.html">Home</a></li>
 				<li><a href="Library.html">Library</a></li>
 				<li><a href="NotesEtu.html">Results/Marks</a></li>
-				<li><a href="Info.html">Profile Info</a></li>
+				<li><a href="ProfileInfo.html">Profile Info</a></li>
 				<li><a href="about.html">About Site</a></li>
 				<li><a href="ConnexionEtu.html" onclick="window.sessionStorage.clear()">Deconnexion</a></li>
 			</ul>

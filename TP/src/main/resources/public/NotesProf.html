@@ -7,7 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<link rel="stylesheet" href="assets/css/own.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	
+	<script src="assets/js/NotesProf.js"></script>
 </head>
 <body class="is-preload">
 <!-- Wrapper -->
@@ -16,7 +20,7 @@
 	  	<!-- Header -->
 		<header id="header">
 			<div class="inner">
-				<a href="index.html" class="logo">
+				<a href="PrincipalProf.html" class="logo">
 					<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Student Space</span>
 				</a>
 				<!-- Nav -->
@@ -32,10 +36,9 @@
 		<nav id="menu">
 			<h2>Menu</h2>
 			<ul>
-				<li><a href="Principal.html">Home</a></li>
+				<li><a href="PrincipalProf.html">Home</a></li>
 				<li><a href="NotesProf.html">Marks Setting</a></li>
-				<li><a href="#.html">Students</a>
-				<li><a href="Info.html">Profile Info</a></li>
+				<li><a href="ProfileInfo.html">Profile Info</a></li>
 				<li><a href="about.html">About Site</a></li>
 				<li><a href="ConnexionProf.html" onclick="window.sessionStorage.clear()">Deconnexion</a></li>
 			</ul>
@@ -54,10 +57,7 @@
 				<h3>Profile</h3>
 				<table class="alt">
 					<tbody>
-						<tr>
-							<th>ID</th>
-							<td id="etu-id"></td>
-						</tr>
+						
 						<tr>
 							<th>Nom</th>
 							<td id="etu-nom"></td>
@@ -85,13 +85,6 @@
 						</tr>
 					</thead>
 					<tbody id="note-body">
-						<tr>
-							<td class="mod"></td>
-							<td class="nom"></td>
-							<td class="prenom"></td>
-							<td ><input type="number" placeholder="Give Mark" id="note-input" required></td>
-							<td><button id="subNoteBtn" >Add</button></td>
-						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -99,11 +92,8 @@
 	</section>
 
 	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script src="assets/js/NotesProf.js"></script>
+	
 </body>
 </html>

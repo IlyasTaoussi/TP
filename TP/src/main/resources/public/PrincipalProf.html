@@ -14,14 +14,8 @@
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<script>
 		$(document).ready(function(){
-			var currentSession;
-			$.get("http://localhost:8080/TP/professeurs/9",function(resp){
-				console.log(resp);
-				currentSession = resp;
-				window.sessionStorage.setItem('currentSession', JSON.stringify(resp));
-				$('#prof-nom').html(currentSession.nom);
-			})
-			
+			var currentSession = JSON.parse(window.sessionStorage.getItem('currentSession'));
+			$('#prof-nom').html(currentSession.nom);
 		})
 		
 	</script>
@@ -33,7 +27,7 @@
 	  	<!-- Header -->
 		<header id="header">
 			<div class="inner">
-				<a href="index.html" class="logo">
+				<a href="PrincipalProf.html" class="logo">
 					<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Professor Space</span>
 				</a>
 				<!-- Nav -->
@@ -49,9 +43,8 @@
 		<nav id="menu">
 			<h2>Menu</h2>
 			<ul>
-				<li><a href="Principal.html">Home</a></li>
+				<li><a href="PrincipalProf.html">Home</a></li>
 				<li><a href="NotesProf.html">Marks Setting</a></li>
-				<li><a href="#.html">Students</a>
 				<li><a href="Info.html">Profile Info</a></li>
 				<li><a href="about.html">About Site</a></li>
 				<li><a href="ConnexionProf.html" onclick="window.sessionStorage.clear()">Deconnexion</a></li>
