@@ -2,6 +2,7 @@
  * 
  */
 $(document).ready(function(){
+	window.sessionStorage.setItem("identite","etu");
 	$('#subEt').click(function(){
 		let email = $('#input-mail').val();
 		let passwd = $('#input-psw').val();
@@ -12,10 +13,12 @@ $(document).ready(function(){
 		    	contentType: "application/json; charset=utf-8",
 		    	dataType: "json",
 		    	success: function(data){
-		    		alert('Account Created !');
 		    		console.log(data);
 					window.sessionStorage.setItem("currentSession",JSON.stringify(data));
 					window.location.replace("http://localhost:8080/PrincipalEtu.html");		
+				},
+				error : function(){
+					alert('Introvable !!');
 				}
 			});
 	});

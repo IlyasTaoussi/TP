@@ -2,8 +2,10 @@
  * 
  */
 $(document).ready(function(){
+	
+	
+	
 	var currentReg = JSON.parse(window.sessionStorage.getItem("newRegister"));
-	console.log(currentReg);
 	var choix = window.sessionStorage.getItem("choix");
 	if(choix == 'etu'){
 		$('#nom-output').html(currentReg.nomEtu);
@@ -16,8 +18,8 @@ $(document).ready(function(){
 	}
 	
 	$('#setLogBtn').click(function(){
-		var email = $('#mail-input').val();
-		var passwd = $('#psw-input').val();
+		let email = $('#mail-input').val();
+		let passwd = $('#psw-input').val();
 		if(choix == 'etu'){
 			$.ajax({
 				type: "PATCH",
@@ -26,8 +28,11 @@ $(document).ready(function(){
 		    	contentType: "application/json; charset=utf-8",
 		    	dataType: "json",
 		    	success: function(data){
-		    		console.log(data);
+		    		alert('Account Created ! Yatta !! Omedetou !!!!');
 					window.location.replace("http://localhost:8080/ConnexionEtu.html")
+				},
+				error: function(){
+					alert('Credintials Already Exists , Please Modify them !');
 				}
 			});
 		}else{
@@ -38,10 +43,15 @@ $(document).ready(function(){
 		    	contentType: "application/json; charset=utf-8",
 		    	dataType: "json",
 		    	success: function(data){
-		    		console.log(data);	
+		    		alert('Account Created ! Yatta !! Omedetou !!!! ');
 					window.location.replace("http://localhost:8080/ConnexionProf.html");
+				},
+				error: function(){
+					alert('Credintials Already Exists , Please Modify them !');
 				}
 			});
 		}
 	})
-})
+	
+	
+});

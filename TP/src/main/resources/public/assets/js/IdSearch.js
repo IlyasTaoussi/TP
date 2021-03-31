@@ -6,7 +6,6 @@ $(document).ready(function(){
 	$('#subBtn').click(function(){
 		let idInput = $('#idUni').val();
 		let choix = $('#choix').val();
-		console.log(choix);
 		if(choix == 'etu'){
 			$.get("http://localhost:8080/TP/etudiants/"+idInput,function(resp){
 					console.log(resp);
