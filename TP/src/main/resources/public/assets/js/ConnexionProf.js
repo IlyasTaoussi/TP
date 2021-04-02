@@ -1,8 +1,12 @@
 /**
- * 
+ * Traitement Javascript pour la page ConnexionProf.html
  */
 $(document).ready(function(){
-	window.sessionStorage.setItem("identite","prof");
+	
+	//Enregistrer L'identité de l'utilisateur (Etudiant) pour un traitement dans un autre document
+	window.sessionStorage.setItem('identite','prof');
+	
+	//Boutton Responsable Pour Se Connecter et Acceder à la page principale
 	$('#subPr').click(function(){
 		let email = $('#input-mail').val();
 		let passwd = $('#input-psw').val();
@@ -13,9 +17,10 @@ $(document).ready(function(){
 		    	contentType: "application/json; charset=utf-8",
 		    	dataType: "json",
 		    	success: function(data){
-		    		console.log(data);
+					//enregistrer la session (données) de l'utilisateur
 					window.sessionStorage.setItem("currentSession",JSON.stringify(data));
-					window.location.replace("http://localhost:8080/PrincipalProf.html");
+					//diriger l'utilisateur vers la page principale
+					window.location.assign("http://localhost:8080/PrincipalProf.html");
 				},
 				error : function(){
 					alert('Introvable !!');
