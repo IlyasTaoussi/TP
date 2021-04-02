@@ -10,7 +10,7 @@ import java.security.MessageDigest;
 public class HashClass {
 	
 	public static String StringToSHA256Hash(String StringToHash) throws Exception {
-		MessageDigest md = MessageDigest.getInstance("SHA256");
+		MessageDigest md = MessageDigest.getInstance("MD5");
 		byte[] digest = md.digest(StringToHash.getBytes(StandardCharsets.UTF_8));
 		return bytesToHex(digest);
 	}
