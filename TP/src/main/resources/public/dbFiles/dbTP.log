@@ -1,0 +1,3 @@
+/*C204*/SET SCHEMA PUBLIC
+alter table etudiant_notes drop constraint UK_jt540i7jfvygymlh4q4u30216
+alter table etudiant_notes add constraint UK_jt540i7jfvygymlh4q4u30216 unique (notes_id_note)

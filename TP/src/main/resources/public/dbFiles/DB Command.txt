@@ -1,0 +1,3 @@
+java -cp hsqldb.jar org.hsqldb.server.Server --database.0 file:dbTP --dbname.0 TPWEB
+
+jdbc:hsqldb:hsql://localhost/TPWEB
