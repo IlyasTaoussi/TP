@@ -40,7 +40,7 @@ $(document).ready(function(){
 		$('#prenom').html(currentSession.prenom);
 		$('#identite').html('Daigaku Kyoushi');
 		$('th.spemod').html('Module');
-		$('#spemod').html(currentSession.spec.nomSpec);
+		$('#spemod').html(currentSession.module.nomModule);
 		$('th.ModSpe').html('Speciality');
 		$('#ModSpe').empty();
 		$('#ModSpe').html(currentSession.module.spe.nomSpec);

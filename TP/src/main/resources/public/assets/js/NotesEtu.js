@@ -11,6 +11,13 @@ $(document).ready(function(){
 			$('#mod-select').append('<option value="mod-'+item.idModule+'">'+item.nomModule+'</option>');
 		})
 	})
+	//Recuperer toute la liste des notes de l'Etudiant'
+	$.get("http://localhost:8080/TP/notes/"+currentSession.idEtudiant,function(resp){
+			$.each(resp, function(index, item){
+				//Ajouter les données Au tableau
+				setNoteTable(item);
+			})
+		})
 	
 	//Detecter le changement de la valeur dans l'element HTML
 	$('#mod-select').change(function(){
