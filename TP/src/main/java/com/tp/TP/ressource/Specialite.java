@@ -13,18 +13,26 @@ public class Specialite implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idSpec;
-	private String nomSpec;
+	private int idSpec; //ID de la specialité
+	private String nomSpec; //nom de la specialité
+	
+	/*
+	 * Constructors
+	 */
 	
 	public Specialite(){
 		super();
 	}
-
+	
 	public Specialite(String nomSpec) {
 		super();
 		this.nomSpec = nomSpec;
 	}
-
+	
+	/*
+	 *	Getters , Setters , Override Methods
+	 */
+	
 	public int getIdSpec() {
 		return idSpec;
 	}

@@ -16,18 +16,26 @@ public class Module implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idModule;
+	private int idModule; // ID du module
 	
-	private String nomModule;
+	private String nomModule; // Nom du module
 	
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-	private Specialite spe;
+	private Specialite spe; // La specialite du module
 
+	/*
+	 * Constructeur
+	 */
+	
 	public Module(String nomModule, Specialite spe) {
 		super();
 		this.nomModule = nomModule;
 		this.spe = spe;
 	}
+	
+	/*
+	 * Getters , Setters , Override Methods
+	 */
 
 	public Specialite getSpe() {
 		return spe;

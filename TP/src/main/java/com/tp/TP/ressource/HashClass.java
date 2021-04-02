@@ -3,6 +3,10 @@ package com.tp.TP.ressource;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
+/*
+ * Classe Static contenant les methodes responsables pour le Hash des mots de passe avant de les enregistrer dans la BDD 
+ */
+
 public class HashClass {
 	
 	public static String StringToSHA256Hash(String StringToHash) throws Exception {

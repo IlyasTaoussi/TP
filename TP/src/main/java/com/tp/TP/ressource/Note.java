@@ -1,6 +1,6 @@
 package com.tp.TP.ressource;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,22 +11,30 @@ import javax.persistence.OneToOne;
 public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idNote;
+	private int idNote; //ID de la Note
 	
 	@OneToOne
-	private Module mod;
+	private Module mod; // Module de la note
 	
-	private double note;
+	private double note; // La note
 
 	public Note() {
 		super();
 	}
-
+	
+	/*
+	 *Constructeurs 
+	 */
+	
 	public Note(Module mod, double note) {
 		super();
 		this.mod = mod;
 		this.note = note;
 	}
+	
+	/*
+	 * Getters, Setters , Override Methods
+	 */
 
 	public int getIdNote() {
 		return idNote;

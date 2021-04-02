@@ -1,5 +1,6 @@
 package com.tp.TP.ressource;
 
+//Classe/Objet pour Enregistrer Une Note dans la BDD
 public class NoteInput {
 	private int idMod;
 	private double note;

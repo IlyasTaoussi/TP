@@ -11,5 +11,8 @@ import com.tp.TP.ressource.Logins;
 public interface LoginsRepository extends CrudRepository<Logins, Integer>{
 	@Query("select l from Logins l where l.mail = :mail and l.password = :password ")
 	Optional<Logins> findByMailAndPassword(@Param("mail") String mail,@Param("password") String password);
+	
+	@Query("select l from Logins l where l.mail = :mail or l.password = :password ")
+	Optional<Logins> findByMailOrPassword(@Param("mail") String mail,@Param("password") String password);
 	Optional<Logins> findByMail(String mail);
 }

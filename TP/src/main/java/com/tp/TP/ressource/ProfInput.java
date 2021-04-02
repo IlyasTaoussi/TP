@@ -1,5 +1,6 @@
 package com.tp.TP.ressource;
 
+//Classe/Objet pour Enregistrer Un Professeur dans la BDD
 public class ProfInput {
 	private int idMod;
 	private String nomProf;

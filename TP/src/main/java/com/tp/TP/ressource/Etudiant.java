@@ -17,25 +17,32 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Etudiant implements Serializable{
-
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idEtudiant;
-	private String nomEtu;
-	private String prenomEtu;
+	
+	private int idEtudiant; //Id de l'Etudiant
+	
+	private String nomEtu; //Nom de l'Etudiant
+	
+	private String prenomEtu; //Prenom de l'Etudiant
 
 	@OneToOne
 	@JoinColumn(name = "idLogin")
-	private Logins loginEtu;
+	private Logins loginEtu; // Logins de L'etudiant
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idSpec")
-	private Specialite spec;
+	private Specialite spec; //Specialité de l'etudiant
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Note> notes;
+	private List<Note> notes; //liste des notes de l'etudiant
 	
+	
+	/*
+	 * Constructeurs
+	 */
 	public Etudiant() {
 		super();
 	}
@@ -64,7 +71,11 @@ public class Etudiant implements Serializable{
 		this.prenomEtu = prenomEtu;
 		this.notes = new ArrayList<>();
 	}
-
+	
+	/*
+	 * Getters , Setters
+	 */
+	
 	public int getIdEtudiant() {
 		return idEtudiant;
 	}
@@ -104,13 +115,7 @@ public class Etudiant implements Serializable{
 	public void setSpec(Specialite spec) {
 		this.spec = spec;
 	}
-
-	@Override
-	public String toString() {
-		return "Etudiant [idEtudiant=" + idEtudiant + ", nom=" + nomEtu + ", prenom=" + prenomEtu + ", login="
-				+ loginEtu + ", Specialité=" + spec + "]";
-	}
-
+	
 	public List<Note> getNotes() {
 		return notes;
 	}
@@ -119,6 +124,66 @@ public class Etudiant implements Serializable{
 		this.notes = notes;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Etudiant [idEtudiant=" + idEtudiant + ", nom=" + nomEtu + ", prenom=" + prenomEtu + ", login="
+				+ loginEtu + ", Specialité=" + spec + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idEtudiant;
+		result = prime * result + ((loginEtu == null) ? 0 : loginEtu.hashCode());
+		result = prime * result + ((nomEtu == null) ? 0 : nomEtu.hashCode());
+		result = prime * result + ((notes == null) ? 0 : notes.hashCode());
+		result = prime * result + ((prenomEtu == null) ? 0 : prenomEtu.hashCode());
+		result = prime * result + ((spec == null) ? 0 : spec.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Etudiant other = (Etudiant) obj;
+		if (idEtudiant != other.idEtudiant)
+			return false;
+		if (loginEtu == null) {
+			if (other.loginEtu != null)
+				return false;
+		} else if (!loginEtu.equals(other.loginEtu))
+			return false;
+		if (nomEtu == null) {
+			if (other.nomEtu != null)
+				return false;
+		} else if (!nomEtu.equals(other.nomEtu))
+			return false;
+		if (notes == null) {
+			if (other.notes != null)
+				return false;
+		} else if (!notes.equals(other.notes))
+			return false;
+		if (prenomEtu == null) {
+			if (other.prenomEtu != null)
+				return false;
+		} else if (!prenomEtu.equals(other.prenomEtu))
+			return false;
+		if (spec == null) {
+			if (other.spec != null)
+				return false;
+		} else if (!spec.equals(other.spec))
+			return false;
+		return true;
+	}
+
+	
 	
 	
 }

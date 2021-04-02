@@ -1,5 +1,7 @@
 package com.tp.TP.ressource;
 
+//Classe/Objet pour Enregistrer Un Module dans la BDD
+
 public class ModuleInput {
 	private String nomModule;
 	private int idSpec;

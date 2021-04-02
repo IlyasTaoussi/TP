@@ -28,12 +28,14 @@ import com.tp.TP.ressource.NoteInput;
 public class NoteREST {
 	
 	@Autowired
-	private NoteRepository noteRepository;
+	private NoteRepository noteRepository; // Repository de la classe Note
 	@Autowired
-	private EtudiantRepository etudiantRepository;
+	private EtudiantRepository etudiantRepository; // Repository de la classe Etudiant
 	@Autowired
-	private ModuleRepository moduleRepository;
+	private ModuleRepository moduleRepository; // Repository de la classe Module
 	
+	// POST /{idEtu}
+	// Methode pour Ajouter une note à l'Etudiant avec l'ID present dans le @Path
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -57,6 +59,8 @@ public class NoteREST {
 		return Response.ok(n).build();
 	}
 	
+	// GET /{idEtu}
+	// Methode pour recuperer la liste des notes de L'etudiant avec l'ID dans le @Path
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idEtu}")
@@ -68,6 +72,8 @@ public class NoteREST {
 		return Response.ok(optE.get().getNotes()).build();
 	}
 	
+	// GET /{idEtu}/{idMod}
+	// Methode Pour Recuprer La liste des notes de l'Etudiant Ayant L'idEtu dans le @Path et concernant le Module avec l'idMod dans le @Path
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idEtu}/{idMod}")
@@ -81,6 +87,8 @@ public class NoteREST {
 		return Response.ok(notesM).build();
 	}
 	
+	// DELETE /{idEtu}/{idNote}
+	// Methode Pour Supprimer une note avec l'idNote dans le @Path , de la liste de l'Etudiant ayant l'idEtu qui est dans le @Path
 	@DELETE
 	@Path("{idEtu}/{idNote}")
 	@Produces(MediaType.APPLICATION_JSON)

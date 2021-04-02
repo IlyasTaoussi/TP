@@ -9,6 +9,7 @@ import com.tp.TP.ressource.Module;
 import com.tp.TP.ressource.Logins;
 import com.tp.TP.ressource.Professeur;
 
+//CrudRepository de la Classe Professeur
 public interface ProfesseurRepository extends CrudRepository<Professeur, Integer>{
 	List<Professeur> findByNomProf(String nomProf);
 	List<Professeur> findByPrenomProf(String prenomProf);

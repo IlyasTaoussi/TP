@@ -27,12 +27,14 @@ import com.tp.TP.ressource.Specialite;
 public class SpecialiteREST {
 	
 	@Autowired
-	private SpecialiteRepository specialiteRepository;
+	private SpecialiteRepository specialiteRepository; // Repository de la classe Specialite
 	@Autowired
-	private ModuleRepository moduleRepository;
+	private ModuleRepository moduleRepository; // Repository de la classe Module
 	@Autowired
-	private EtudiantRepository etudiantRepository;
+	private EtudiantRepository etudiantRepository; // Repository de la classe Etudiant
 	
+	// POST
+	// Methode Pour Enregistrer Une Specialite dans la BDD
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,6 +43,8 @@ public class SpecialiteREST {
         return sp;
     }
 	
+	// GET /{idSpe}/modules
+	// Methode Pour Recevoir la liste des Modules qui ont la specialité avec l'idSpe dans le @Path
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idSpe}/modules")
@@ -54,6 +58,8 @@ public class SpecialiteREST {
 		return Response.ok(listM).build();
 	}
 	
+	// GET /{idSpe}/etudiants
+	// Methode Pour Recevoir la liste des Etudiants qui ont la specialité avec l'idSpe dans le @Path
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idSpe}/etudiants")
@@ -67,6 +73,8 @@ public class SpecialiteREST {
 		return Response.ok(listEt).build();
 	}
 	
+	// GET 
+	// Methode Pour Recevoir la liste des specialités dans la BDD
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Specialite> getAllSpe() {

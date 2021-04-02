@@ -3,7 +3,6 @@ package com.tp.TP.process;
 import java.util.Optional;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -27,12 +26,14 @@ import com.tp.TP.ressource.Professeur;
 public class LoginsREST {
 	
 	@Autowired
-	private LoginsRepository loginsRepository;
+	private LoginsRepository loginsRepository; //Repository de la classe Logins
 	@Autowired
-	private EtudiantRepository etudiantRepository;
+	private EtudiantRepository etudiantRepository; //Repository de la classe Etudiant
 	@Autowired
-	private ProfesseurRepository professeurRepository;
+	private ProfesseurRepository professeurRepository; //Repository de la classe Professeur
 	
+	// POST
+	// Methode pour ajouter une entité Logins dans la BDD
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -41,6 +42,8 @@ public class LoginsREST {
         return m;
     }
 	
+	// PATCH /{id}
+	// Methode Pour Recuperer L'utilisateur(Etudiant/Professeur) et Enregistrer les nouveaux Logins à leur Entité dans la BDD
 	@PATCH
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -57,7 +60,7 @@ public class LoginsREST {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 		
-		Optional<Logins> optL = loginsRepository.findByMailAndPassword(L.getEmail(), hashed);
+		Optional<Logins> optL = loginsRepository.findByMailOrPassword(L.getEmail(), hashed);
 		if(!optL.isPresent()){
 			if(!optE.isPresent()) {
 				if(!optP.isPresent()) {
@@ -79,32 +82,4 @@ public class LoginsREST {
 		}
 	}
 	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{idUni}/professeurs")
-	public Response getIdProf(@PathParam("idUni") int idUni) {
-		Optional<Professeur> optP = professeurRepository.findById(idUni);
-
-		if(!optP.isPresent()) {
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
-		Professeur p = optP.get();
-		professeurRepository.save(p);
-		return Response.ok(p).build();
-	}
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{idUni}/etudiants")
-	public Response getIdEtu(@PathParam("idUni") int idUni) {
-		Optional<Etudiant> optE = etudiantRepository.findById(idUni);
-		
-		if(!optE.isPresent()) {
-			return Response.status(Response.Status.NOT_FOUND).build();
-		}
-		
-		Etudiant e = optE.get();
-		etudiantRepository.save(e);
-		return Response.ok(e).build();
-	}
 }

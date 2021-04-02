@@ -1,5 +1,6 @@
 package com.tp.TP.ressource;
 
+//Classe/Objet pour Enregistrer Un Etudiant dans la BDD
 public class EtudiantInput {
 	
 	private String nomEtu;

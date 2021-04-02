@@ -29,13 +29,15 @@ import com.tp.TP.ressource.Specialite;
 public class EtudiantREST {
 	
 	@Autowired
-	private EtudiantRepository etudiantRepository;
+	private EtudiantRepository etudiantRepository; //Repository de la classe Etudiant
 	@Autowired
-	private LoginsRepository loginsRepository;
+	private LoginsRepository loginsRepository; //Repository de la classe Logins
 	@Autowired
-	private SpecialiteRepository specialiteRepository;
+	private SpecialiteRepository specialiteRepository; // Repository de la Classe Specialite
 	
 	
+	// POST
+	//Methode POST Pour Créer et Ajouter un nouveau Etudiant à la Base de Données
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,6 +51,7 @@ public class EtudiantREST {
         return Response.ok(E).build();
     }
 	
+	//Methode GET qui renvoie tous les Etudiants dans la BDD (Unused)
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Etudiant> getAllEtudiants(){
@@ -57,6 +60,8 @@ public class EtudiantREST {
 		return etudiants;
 	}
 	
+	// POST /logins
+	//Methode qui va mettre à jour les Logins d'Un Etudiant et l'enregistre dans la BDD 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -81,6 +86,8 @@ public class EtudiantREST {
 		return Response.ok(E).build();
 	}
 	
+	// GET /{idInput}
+	// Methode qui reçoit un id et Renvoie l'etudiant correspondant
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idInput}")

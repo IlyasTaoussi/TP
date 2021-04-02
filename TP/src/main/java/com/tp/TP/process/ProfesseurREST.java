@@ -29,12 +29,14 @@ import com.tp.TP.ressource.Professeur;
 
 public class ProfesseurREST {
 	@Autowired
-	private ProfesseurRepository professeurRepository;
+	private ProfesseurRepository professeurRepository; //Repository de la classe Professeur
 	@Autowired
-	private LoginsRepository loginsRepository;
+	private LoginsRepository loginsRepository;	//Repository de la classe Logins
 	@Autowired
-	private ModuleRepository moduleRepository;
+	private ModuleRepository moduleRepository;	//Repository de la classe Module
 	
+	// POST
+	//Methode POST Pour Créer et Ajouter un nouveau Professeur à la Base de Données
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,6 +49,8 @@ public class ProfesseurREST {
         return Response.ok(p).build();
     }
 	
+	// GET
+	// Methode GET qui renvoie tous les Professeurs dans la BDD (Unused)
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Professeur> getAllProfesseurs(){
@@ -55,6 +59,8 @@ public class ProfesseurREST {
 		return profs;
 	}
 	
+	// POST /logins
+	//Methode qui va mettre à jour les Logins d'Un Professeur et l'enregistre dans la BDD 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -79,6 +85,8 @@ public class ProfesseurREST {
 		return Response.ok(P).build();
 	}
 	
+	// GET /{idInput}
+	// Methode qui reçoit un id et Renvoie le professeur correspondant
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idInput}")

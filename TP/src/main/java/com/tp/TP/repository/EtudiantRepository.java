@@ -9,6 +9,7 @@ import com.tp.TP.ressource.Etudiant;
 import com.tp.TP.ressource.Logins;
 import com.tp.TP.ressource.Specialite;
 
+//CrudRepository de la Classe Etudiant
 public interface EtudiantRepository extends CrudRepository<Etudiant, Integer> {
 	List<Etudiant> findByNomEtu(String nomEtu);
 	List<Etudiant> findByPrenomEtu(String prenomEtu);

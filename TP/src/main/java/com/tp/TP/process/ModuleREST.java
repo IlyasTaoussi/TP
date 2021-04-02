@@ -27,11 +27,14 @@ import com.tp.TP.ressource.Specialite;
 public class ModuleREST {
 	
 	@Autowired
-	private ModuleRepository moduleRepository;
+	private ModuleRepository moduleRepository; // Repository de la classe Module
 	@Autowired
-	private SpecialiteRepository speRepository;
-	@Autowired
-	private ProfesseurRepository professeurRepository;
+	private SpecialiteRepository speRepository; //  Repository de la classe Specialite
+	@Autowired 
+	private ProfesseurRepository professeurRepository; // Repository de la classe Professeur
+	
+	// POST
+	// Methode Pour Ajouter un Module dans La BDD
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,6 +48,8 @@ public class ModuleREST {
         return Response.ok(m).build();
     }
 	
+	// GET
+	// Methode pour avoir tous les Modules de la BDD
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Module> getAllModules() {
@@ -53,6 +58,8 @@ public class ModuleREST {
 		return modules;
 	}
 	
+	// GET /{idMod}/professeurs
+	// Methode pour Recuperer le professeur ayant le Module avec l'id dans le path
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{idMod}/professeurs")

@@ -1,5 +1,6 @@
 package com.tp.TP.ressource;
 
+//Classe/Objet pour Enregistrer Un Login dans la BDD
 public class LoginInput {
 	private String email;
 	private String passwd;
