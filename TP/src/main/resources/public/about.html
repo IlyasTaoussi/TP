@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Weeb University</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="assets/css/own.css" />
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script >
+		$(document).ready(function(){
+			var identite = window.sessionStorage.getItem('identite');
+			if(identite == 'etu'){
+				$('#menu ul').append('<li><a href="PrincipalEtu.html">Home</a></li><li><a href="Library.html">Library</a></li><li><a href="NotesEtu.html">Results/Marks</a></li><li><a href="ProfileInfo.html">Profile Info</a></li><li><a href="about.html">About Site</a></li><li><a href="ConnexionEtu.html">Deconnexion</a></li>');
+				
+			}else{
+				$('#menu ul').append('<li><a href="PrincipalProf.html">Home</a></li><li><a href="NotesProf.html">Marks Setting</a></li><li><a href="ProfileInfo.html">Profile Info</a></li><li><a href="about.html">About Site</a></li><li><a href="ConnexionProf.html">Deconnexion</a></li>');
+			}
+		});
+	</script>
+</head>
+<body class="is-preload">
+<!-- Wrapper -->
+	<div id="wrapper">
+
+	  	<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="PrincipalEtu.html" class="logo">
+					<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Weeb University Student Space</span>
+				</a>
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+			</ul>
+		</nav>
+	</div>
+	
+	<div>
+		<h2>About..</h2>
+		<div>
+			
+			<b>ILYAS TAOUSSI a.k.a Weeb Man  ,ICY  INSA Hauts-de-France</b>
+			<p>This is an imaginary beta-testing university project , which i have combined most of my passions , hobbys , skills and time to complete just a tiny bit of my Dream</p>
+			<p>The project is not real , but most informations are : Library, Teachers, Informations which Specialities and Modules are based on ,.... </p>
+			
+		</div>
+		<h1>Today is Another Great Day , Kyou mo ii hi da (LiSA)</h1>
+	</div>
+	
+</body>
+</html>
